@@ -1,0 +1,19 @@
+{
+  "name": "Pallet Designer",
+  "short_name": "Pallet Designer",
+  "description": "Pallet Designer – pokaz programu",
+  "lang": "pl",
+  "start_url": "./",
+  "scope": "./",
+  "id": "./",
+  "display": "fullscreen",
+  "display_override": ["fullscreen", "standalone"],
+  "orientation": "any",
+  "background_color": "#eef2f7",
+  "theme_color": "#ffffff",
+  "icons": [
+    { "src": "icons/web-app-manifest-192x192.png", "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icons/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icons/web-app-manifest-512x512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" }
+  ]
+}

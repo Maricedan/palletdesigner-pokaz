@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="pl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no, viewport-fit=cover">
+<meta name="theme-color" content="#ffffff">
+<meta name="color-scheme" content="light">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="default">
+<meta name="apple-mobile-web-app-title" content="Pallet Designer">
+<meta name="description" content="Pallet Designer – pokaz programu">
+<title>Pallet Designer</title>
+<link rel="manifest" href="manifest.webmanifest">
+<link rel="icon" type="image/png" sizes="96x96" href="icons/favicon-96x96.png">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="style.css">
+<script type="module" src="app.js"></script>
+</head>
+<body>
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <symbol id="i-home" viewBox="0 0 24 24"><path d="M3 10.5 12 3l9 7.5V21h-6v-6H9v6H3z" fill="none" stroke="currentColor" stroke-width="2" stroke-linejoin="round"/></symbol>
+  <symbol id="i-restart" viewBox="0 0 24 24"><path d="M3 12a9 9 0 1 0 3-6.7M3 4v5h5" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-back" viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-play" viewBox="0 0 24 24"><path d="M7 4.5v15l13-7.5z" fill="currentColor"/></symbol>
+  <symbol id="i-loop" viewBox="0 0 24 24"><path d="M17 2l4 4-4 4M3 11V9a3 3 0 0 1 3-3h15M7 22l-4-4 4-4M21 13v2a3 3 0 0 1-3 3H3" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-share" viewBox="0 0 24 24"><path d="M12 3v12M7 8l5-5 5 5M5 13v7h14v-7" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fs" viewBox="0 0 24 24"><path d="M4 9V4h5M15 4h5v5M20 15v5h-5M9 20H4v-5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-fs-exit" viewBox="0 0 24 24"><path d="M9 4v5H4M20 9h-5V4M15 20v-5h5M4 15h5v5" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+  <symbol id="i-next" viewBox="0 0 24 24"><path d="M9 5l7 7-7 7" fill="none" stroke="currentColor" stroke-width="2.4" stroke-linecap="round" stroke-linejoin="round"/></symbol>
+</svg>
+<div id="app" data-view="home">
+
+  <section id="home" class="view scroll">
+    <header class="home-head">
+      <img class="logo" src="icons/favicon-96x96.png" alt="">
+      <span class="brand">Pallet Designer</span>
+      <span class="spacer"></span>
+      <button type="button" id="offline" class="offline" data-state="idle"><span class="dot"></span><span class="txt"></span><span class="bar"><i></i></span></button>
+      <div class="lang" role="group" aria-label="Język"><button type="button" data-lang="pl">PL</button><button type="button" data-lang="en">EN</button></div>
+      <button type="button" class="fs-btn"><svg class="ico"><use href="#i-fs"/></svg></button>
+    </header>
+    <div class="tiles">
+      <button type="button" class="tile tile-program" id="tile-program">
+        <img alt="" decoding="async">
+        <span class="tile-label"><b class="big" data-t="program"></b><span class="sub" data-t="programSub"></span></span>
+      </button>
+      <div id="story-tiles" class="story-tiles"></div>
+      <button type="button" class="tile tile-film" id="tile-film">
+        <img alt="" decoding="async">
+        <span class="tile-label"><svg class="ico play"><use href="#i-play"/></svg><span class="title" data-t="film"></span></span>
+      </button>
+    </div>
+    <button type="button" id="btn-loop" class="loop-btn"><svg class="ico"><use href="#i-loop"/></svg><span data-t="loop"></span><span class="sub" data-t="loopSub"></span></button>
+  </section>
+
+  <section id="program" class="view">
+    <nav class="tabbar">
+      <button type="button" class="home-btn" aria-label="Start"><svg class="ico"><use href="#i-home"/></svg></button>
+      <div class="tabs scroll"></div>
+      <button type="button" class="fs-btn"><svg class="ico"><use href="#i-fs"/></svg></button>
+    </nav>
+    <div class="stage"><div class="strip"></div></div>
+    <div class="nav">
+      <button type="button" class="nav-btn nav-back"><span class="nav-ico"><svg class="ico"><use href="#i-back"/></svg></span><span class="nav-label" data-t="navBack"></span></button>
+      <button type="button" class="nav-btn nav-next"><span class="nav-ico"><svg class="ico"><use href="#i-next"/></svg></span><span class="nav-label" data-t="navNext"></span></button>
+    </div>
+    <div class="capbar">
+      <div class="cap-left dots"></div>
+      <div class="cap-text"></div>
+      <button type="button" class="cap-right restart"><svg class="ico"><use href="#i-restart"/></svg><span data-t="restart"></span></button>
+    </div>
+  </section>
+
+  <section id="story" class="view">
+    <div class="stage"></div>
+    <div class="nav">
+      <button type="button" class="nav-btn nav-back"><span class="nav-ico"><svg class="ico"><use href="#i-back"/></svg></span><span class="nav-label" data-t="navBack"></span></button>
+      <button type="button" class="nav-btn nav-next"><span class="nav-ico"><svg class="ico"><use href="#i-next"/></svg></span><span class="nav-label" data-t="navNext"></span></button>
+    </div>
+    <div class="endcard">
+      <img class="qr" src="qr-pokaz.svg" alt="QR">
+      <div class="card-body">
+        <a class="site" href="https://palletdesigner.com" target="_blank" rel="noopener">palletdesigner.com</a>
+        <span class="scan" data-t="scan"></span>
+        <div class="card-buttons">
+          <button type="button" class="btn primary card-share"><svg class="ico"><use href="#i-share"/></svg><span data-t="share"></span></button>
+          <button type="button" class="btn card-next"><span class="col"><span data-t="nextStory"></span><span class="card-next-title"></span></span><svg class="ico"><use href="#i-next"/></svg></button>
+          <button type="button" class="btn card-replay"><svg class="ico"><use href="#i-restart"/></svg><span data-t="replay"></span></button>
+          <button type="button" class="btn card-home"><svg class="ico"><use href="#i-home"/></svg><span data-t="startScreen"></span></button>
+        </div>
+      </div>
+    </div>
+    <div class="capbar">
+      <div class="cap-left"></div>
+      <div class="cap-text"></div>
+      <div class="cap-right">
+        <button type="button" class="fs-btn"><svg class="ico"><use href="#i-fs"/></svg></button>
+        <button type="button" class="home-corner"><svg class="ico"><use href="#i-home"/></svg><span data-t="home"></span></button>
+        <button type="button" class="exit"><svg class="ico"><use href="#i-home"/></svg><span data-t="exit"></span></button>
+      </div>
+    </div>
+  </section>
+
+  <section id="materials" class="view">
+    <nav class="tabbar">
+      <button type="button" class="home-btn" aria-label="Start"><svg class="ico"><use href="#i-home"/></svg></button>
+      <div class="tabs scroll"></div>
+      <span class="count"></span>
+      <button type="button" class="fs-btn"><svg class="ico"><use href="#i-fs"/></svg></button>
+    </nav>
+    <div class="stage"><div class="strip"></div><span class="play-hint"><svg class="ico"><use href="#i-play"/></svg></span></div>
+    <div class="nav">
+      <button type="button" class="nav-btn nav-back"><span class="nav-ico"><svg class="ico"><use href="#i-back"/></svg></span><span class="nav-label" data-t="navBack"></span></button>
+      <button type="button" class="nav-btn nav-next"><span class="nav-ico"><svg class="ico"><use href="#i-next"/></svg></span><span class="nav-label" data-t="navNext"></span></button>
+    </div>
+  </section>
+
+  <section id="film" class="view">
+    <video controls playsinline preload="auto"></video>
+    <span class="film-status"></span>
+    <button type="button" class="back"><svg class="ico"><use href="#i-back"/></svg><span data-t="back"></span></button>
+  </section>
+
+  <div id="flash" role="status"></div>
+</div>
+</body>
+</html>
